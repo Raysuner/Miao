@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+	</head>
+	<body></body>
+	<script charset="utf-8">
+		let last, cur
+		let c = 1
+		let id
+		window.addEventListener("click", (e) => {
+      cur = Date.now()
+			clearTimeout(id)
+			id = setTimeout(() => {
+				c = 1
+			}, 300)
+			if (cur - last < 300) {
+				c++
+			}
+			if (c == 1) {
+				console.log("1 click")
+			} else if (c == 2) {
+				console.log("2 click")
+			} else if (c === 3) {
+				console.log("3 click")
+			} else if (c === 4) {
+				console.log("4 click")
+			} else if (c === 5) {
+				console.log("5 click")
+			} else if (c === 6) {
+				console.log("6 click")
+			} else if (c === 7) {
+				console.log("7 click")
+			}
+      last = cur
+		})
+	</script>
+</html>

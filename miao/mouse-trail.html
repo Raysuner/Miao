@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Mouse trail</title>
+		<style type="text/css" media="screen">
+			.circle {
+				width: 50px;
+				height: 50px;
+				border-radius: 9999px;
+				position: absolute;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<div class="circle1 circle"></div>
+			<div class="circle2 circle"></div>
+			<div class="circle3 circle"></div>
+		</section>
+	</body>
+	<script charset="utf-8">
+		let radius = 100
+		let circle1 = document.querySelector(".circle1"),
+			circle2 = document.querySelector(".circle2"),
+			circle3 = document.querySelector(".circle3")
+
+		let x = 0,
+			y = 0
+
+		window.addEventListener("mousemove", function (event) {
+			x = event.clientX
+			y = event.clientY
+		})
+
+		requestAnimationFrame(function animation(time) {
+			let angle1 = time * 0.01,
+				angle2 = angle1 + (Math.PI * 2) / 3,
+				angle3 = angle2 + (Math.PI * 2) / 3
+
+			let halfCircle1Width = circle1.clientWidth >> 1,
+				halfCircle2Width = circle2.clientWidth >> 1,
+				halfCircle3Width = circle3.clientWidth >> 1
+
+			circle1.style.left =
+				Math.cos(angle1) * radius + x - halfCircle1Width + "px"
+			circle1.style.top =
+				Math.sin(angle1) * radius + y - halfCircle1Width + "px"
+			circle2.style.left =
+				Math.cos(angle2) * radius + x - halfCircle2Width + "px"
+			circle2.style.top =
+				Math.sin(angle2) * radius + y - halfCircle2Width + "px"
+			circle3.style.left =
+				Math.cos(angle3) * radius + x - halfCircle3Width + "px"
+			circle3.style.top =
+				Math.sin(angle3) * radius + y - halfCircle3Width + "px"
+			requestAnimationFrame(animation)
+		})
+	</script>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>radio-slider</title>
+    <style>
+      @keyframes animal {
+        from {
+          left: 0;
+        }
+        to {
+          left: 100%;
+        }
+      }
+
+      body {
+        background-color: #ddd;
+      }
+
+      section {
+        width: 572px;
+        margin: 0 auto;
+        border: 20px solid #fff;
+        position: relative;
+      }
+
+      input {
+        display: none;
+      }
+
+      div.imgs {
+        width: 572px;
+        height: 357px;
+      }
+
+      .imgs > div {
+        width: 25%;
+        height: 100%;
+        position: relative;
+        float: left;
+        overflow: hidden;
+      }
+
+      .imgs > div span {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: -100%;
+        transition: left 1s;
+        animation: animal 1s;
+      }
+
+      .imgs div:nth-child(1) span {
+        background-position: 0 0;
+      }
+      .imgs div:nth-child(2) span {
+        background-position: -100% 0;
+      }
+      .imgs div:nth-child(3) span {
+        background-position: -200% 0;
+      }
+      .imgs div:nth-child(4) span {
+        background-position: -300% 0;
+      }
+
+      .imgs div span:nth-child(1) {
+        background-image: url(https://travel.12306.cn/imgs/resources/uploadfiles/images/b0c76b21-531b-4af4-a607-cf5672c72ded_product_W572_H370.jpg);
+      }
+      .imgs div span:nth-child(2) {
+        background-image: url(https://travel.12306.cn/imgs/resources/uploadfiles/images/8b36f9a7-f780-4e71-b719-9300109a9ff2_product_W572_H370.jpg);
+      }
+      .imgs div span:nth-child(3) {
+        background-image: url(https://travel.12306.cn/imgs/resources/uploadfiles/images/6d77d0ea-53d0-4518-b7e9-e53795b4920c_product_W572_H370.jpg);
+      }
+      .imgs div span:nth-child(4) {
+        background-image: url(https://travel.12306.cn/imgs/resources/uploadfiles/images/1716878f-79a2-4db1-af8c-b9c2039f0b3c_product_W572_H370.jpg);
+      }
+
+      input:nth-child(1):checked ~ .labels label:nth-child(1),
+      input:nth-child(2):checked ~ .labels label:nth-child(2),
+      input:nth-child(3):checked ~ .labels label:nth-child(3),
+      input:nth-child(4):checked ~ .labels label:nth-child(4) {
+        background-color: aliceblue;
+      }
+
+      input:nth-child(1):checked ~ .imgs div span:nth-child(1),
+      input:nth-child(2):checked ~ .imgs div span:nth-child(2),
+      input:nth-child(3):checked ~ .imgs div span:nth-child(3),
+      input:nth-child(4):checked ~ .imgs div span:nth-child(4) {
+        left: 0;
+        z-index: 1;
+        animation: none;
+      }
+
+      div.labels {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        position: absolute;
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+      }
+
+      div.labels label {
+        width: 30px;
+        height: 30px;
+        border-radius: 999px;
+        background-color: rgba(130, 195, 217, 0.9);
+      }
+
+      .side-labels {
+        width: 30px;
+        height: 30px;
+        border-radius: 999px;
+        position: absolute;
+        top: 50%;
+        background-color: rgba(130, 195, 217, 0.9);
+        transform: translateY(-50%);
+        z-index: 10;
+        overflow: hidden;
+      }
+
+      .side-labels label {
+        width: 30px;
+        height: 30px;
+        background-color: rgba(130, 195, 217, 0.9);
+        position: absolute;
+        border-radius: 999px;
+        top: 0;
+      }
+
+      .left-labels {
+        left: 0;
+      }
+
+      .left-labels label {
+        left: -100%;
+      }
+
+      .right-labels {
+        right: 0;
+      }
+
+      .right-labels label {
+        right: -100%;
+      }
+
+      input:nth-child(1):checked ~ .left-labels label:nth-child(4),
+      input:nth-child(2):checked ~ .left-labels label:nth-child(1),
+      input:nth-child(3):checked ~ .left-labels label:nth-child(2),
+      input:nth-child(4):checked ~ .left-labels label:nth-child(3) {
+        left: 0;
+      }
+
+      input:nth-child(1):checked ~ .right-labels label:nth-child(2),
+      input:nth-child(2):checked ~ .right-labels label:nth-child(3),
+      input:nth-child(3):checked ~ .right-labels label:nth-child(4),
+      input:nth-child(4):checked ~ .right-labels label:nth-child(1) {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <input type="radio" name="a" id="a1" checked />
+      <input type="radio" name="a" id="a2" />
+      <input type="radio" name="a" id="a3" />
+      <input type="radio" name="a" id="a4" />
+      <div class="labels">
+        <label for="a1"></label>
+        <label for="a2"></label>
+        <label for="a3"></label>
+        <label for="a4"></label>
+      </div>
+      <div class="left-labels side-labels">
+        <label for="a1"></label>
+        <label for="a2"></label>
+        <label for="a3"></label>
+        <label for="a4"></label>
+      </div>
+      <div class="right-labels side-labels">
+        <label for="a1"></label>
+        <label for="a2"></label>
+        <label for="a3"></label>
+        <label for="a4"></label>
+      </div>
+      <div class="imgs">
+        <div><span></span><span></span><span></span><span></span></div>
+        <div><span></span><span></span><span></span><span></span></div>
+        <div><span></span><span></span><span></span><span></span></div>
+        <div><span></span><span></span><span></span><span></span></div>
+      </div>
+    </section>
+  </body>
+</html>

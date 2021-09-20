@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clock</title>
+    <style>
+      @keyframes hour {
+        to {
+          transform: translate(-6px, -6px) rotate(360deg);
+        }
+      }
+      @keyframes minute {
+        to {
+          transform: translate(-4px, -4px) rotate(360deg);
+        }
+      }
+      @keyframes second {
+        to {
+          transform: translate(-34px, -3px) rotate(360deg);
+        }
+      }
+
+      .clock {
+        margin: 0 auto;
+        background-color: #eee;
+        height: 500px;
+        width: 500px;
+        border-radius: 9999px;
+        position: relative;
+      }
+
+      .number {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 40px;
+      }
+
+      .hour1 {
+        transform: translate(-50%, -50%) rotate(30deg) translateY(-230px)
+          rotate(-30deg);
+      }
+      .hour2 {
+        transform: translate(-50%, -50%) rotate(60deg) translateY(-230px)
+          rotate(-60deg);
+      }
+      .hour3 {
+        transform: translate(-50%, -50%) rotate(90deg) translateY(-230px)
+          rotate(-90deg);
+      }
+      .hour4 {
+        transform: translate(-50%, -50%) rotate(120deg) translateY(-230px)
+          rotate(-120deg);
+      }
+      .hour5 {
+        transform: translate(-50%, -50%) rotate(150deg) translateY(-230px)
+          rotate(-150deg);
+      }
+      .hour6 {
+        transform: translate(-50%, -50%) rotate(180deg) translateY(-230px)
+          rotate(-180deg);
+      }
+      .hour7 {
+        transform: translate(-50%, -50%) rotate(210deg) translateY(-230px)
+          rotate(-210deg);
+      }
+      .hour8 {
+        transform: translate(-50%, -50%) rotate(240deg) translateY(-230px)
+          rotate(-240deg);
+      }
+      .hour9 {
+        transform: translate(-50%, -50%) rotate(270deg) translateY(-230px)
+          rotate(-270deg);
+      }
+      .hour10 {
+        transform: translate(-50%, -50%) rotate(300deg) translateY(-230px)
+          rotate(-300deg);
+      }
+      .hour11 {
+        transform: translate(-50%, -50%) rotate(330deg) translateY(-230px)
+          rotate(-330deg);
+      }
+      .hour12 {
+        transform: translate(-50%, -50%) rotate(360deg) translateY(-230px)
+          rotate(-360deg);
+      }
+
+      .pointer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+
+      .hour-pointer {
+        width: 170px;
+        height: 12px;
+        border-radius: 0 100px 100px 0 / 0 6px 6px 0;
+        background-color: black;
+        transform: translate(-6px, -6px);
+        transform-origin: 6px 6px;
+        animation: hour 43200s linear infinite;
+      }
+
+      .minute-pointer {
+        width: 210px;
+        height: 8px;
+        background-color: black;
+        border-radius: 0 100px 100px 0 / 0 4px 4px 0;
+        transform-origin: 4px 4px;
+        transform: translate(-4px, -4px);
+        animation: minute 3600s linear infinite;
+      }
+
+      .second-pointer {
+        width: 250px;
+        height: 6px;
+        /* left: 220px; */
+        background-color: red;
+        transform-origin: 34px 3px;
+        transform: translate(-34px, -3px);
+        border-radius: 0 100px 100px 0 / 0 3px 3px 0;
+        animation: second 60s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="number hour1">1</div>
+      <div class="number hour2">2</div>
+      <div class="number hour3">3</div>
+      <div class="number hour4">4</div>
+      <div class="number hour5">5</div>
+      <div class="number hour6">6</div>
+      <div class="number hour7">7</div>
+      <div class="number hour8">8</div>
+      <div class="number hour9">9</div>
+      <div class="number hour10">10</div>
+      <div class="number hour11">11</div>
+      <div class="number hour12">12</div>
+      <div class="hour-pointer pointer"></div>
+      <div class="minute-pointer pointer"></div>
+      <div class="second-pointer pointer"></div>
+    </div>
+  </body>
+</html>

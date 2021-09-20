@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>solar-system</title>
+		<style type="text/css">
+			html {
+				background: url(img/starry-sky.jpg);
+			}
+			section {
+				margin-left: 500px;
+				margin-top: 300px;
+				position: relative;
+				width: 500px;
+				height: 500px;
+			}
+			img {
+				position: absolute;
+				border-radius: 9999px;
+			}
+			.sun {
+				width: 150px;
+				height: 150px;
+			}
+			.earth {
+				width: 100px;
+				height: 100px;
+			}
+			.moon {
+				width: 70px;
+				height: 70px;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<img src="img/sun.jpeg" class="sun" />
+			<img src="img/earth.jpeg" class="earth" />
+			<img src="img/moon.jpeg" class="moon" />
+		</section>
+	</body>
+	<script>
+		let sun = document.querySelector(".sun"),
+			earth = document.querySelector(".earth"),
+			moon = document.querySelector(".moon")
+
+		let angleSun = 0,
+			angleEarth = 0,
+			angleMoon = 0
+
+		let radiusSun = 150,
+			radiusEarth = 350,
+			radiusMoon = 150
+
+		function animation(time) {
+			angleSun = time * 0.0005
+			angleEarth = time * 0.001
+			angleMoon = time * 0.002
+
+			let halfSunWidth = sun.offsetWidth >> 1
+			let leftSun = Math.cos(angleSun) * radiusSun - halfSunWidth
+			let topSun = Math.sin(angleSun) * radiusSun - halfSunWidth
+
+			sun.style.left = leftSun + "px"
+			sun.style.top = topSun + "px"
+
+			let halfEarthWidth = earth.offsetWidth >> 1
+
+			let leftEarth =
+				leftSun +
+				halfSunWidth +
+				Math.cos(angleEarth) * radiusEarth -
+				halfEarthWidth
+
+			let topEarth =
+				topSun +
+				halfSunWidth +
+				Math.sin(angleEarth) * radiusEarth -
+				halfEarthWidth
+
+			earth.style.left = leftEarth + "px"
+			earth.style.top = topEarth + "px"
+
+			let halfMoonWidth = moon.offsetWidth >> 1
+
+			let leftMoon =
+				leftEarth +
+				Math.cos(angleMoon) * radiusMoon +
+				halfEarthWidth -
+				halfMoonWidth
+
+			let topMoon =
+				topEarth +
+				Math.sin(angleMoon) * radiusMoon +
+				halfEarthWidth -
+				halfMoonWidth
+
+			moon.style.left = leftMoon + "px"
+			moon.style.top = topMoon + "px"
+
+			requestAnimationFrame(animation)
+		}
+		requestAnimationFrame(animation)
+	</script>
+</html>

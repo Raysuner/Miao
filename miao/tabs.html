@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Tabs</title>
+		<style type="text/css" media="screen">
+			button {
+				font-size: 15px;
+				font-weight: bold;
+				border: 0;
+				outline: none;
+				border-bottom: 1px solid #495057;
+				color: #495057;
+				background-color: white;
+				padding: 10px 20px;
+			}
+
+			div.content {
+				margin-top: 10px;
+				width: 800px;
+				height: 300px;
+				border: 1px solid;
+				position: relative;
+			}
+
+			p {
+				visibility: hidden;
+				position: absolute;
+				top: 0;
+				left: 0;
+				word-break: break-word;
+			}
+
+			.selected {
+				border-bottom: 1px solid lightskyblue;
+				color: lightskyblue;
+			}
+
+			.visible {
+				visibility: visible;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<div class="toc">
+				<button class="btn1">按钮1</button>
+				<button class="btn2">按钮2</button>
+				<button class="btn3">按钮3</button>
+			</div>
+			<div class="content">
+				<p>
+					Consectetur laboriosam exercitationem ea enim tempore Tenetur libero
+					unde velit. Consectetur laboriosam exercitationem ea enim tempore
+					Tenetur libero unde velit. Consectetur laboriosam exercitationem ea
+					enim tempore Tenetur libero unde velit. Consectetur laboriosam
+					exercitationem ea enim tempore Tenetur libero unde velit.
+				</p>
+				<p>
+					Consectetur explicabo quas quibusdam adipisicing cumque! Eligendi
+					accusamus delectus ipsa.
+				</p>
+				<p>
+					Adipisicing nulla unde molestiae enim sequi corporis? Quisquam
+					molestias vitae.
+				</p>
+			</div>
+		</section>
+	</body>
+	<script charset="utf-8">
+		let section = document.querySelector("section"),
+			tocElem = section.querySelector(".toc"),
+			contentElem = section.querySelector(".content")
+
+		let firstTocElem = tocElem.firstElementChild,
+			firstContentElem = contentElem.firstElementChild
+
+		firstTocElem.classList.add("selected")
+		firstContentElem.classList.add("visible")
+
+		document.addEventListener("click", function onClick(event) {
+			let target = event.target
+			if (target.tagName === "BUTTON") {
+				let buttonList = section.querySelectorAll("button")
+				let contentList = section.querySelectorAll("p")
+				let index = null
+				for (let i = 0; i < buttonList.length; i++) {
+					if (target.textContent === buttonList[i].textContent) {
+						index = i
+					}
+					buttonList[i].classList.remove("selected")
+					contentList[i].classList.remove("visible")
+				}
+				console.log("index: ", index)
+				target.classList.add("selected")
+				contentList[index].classList.add("visible")
+			}
+		})
+	</script>
+</html>

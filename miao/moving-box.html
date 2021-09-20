@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Moving box</title>
+		<style type="text/css" media="screen">
+			.box {
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				background-color: lightskyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" style="left: 50px; top: 50px"></div>
+	</body>
+	<script>
+		let box = document.querySelector(".box")
+		let vx = 0,
+			vy = 0
+
+		let leftArrow = false,
+			rightArrow = false,
+			upArrow = false,
+			downArrow = false
+
+		document.addEventListener("keydown", function (event) {
+			if (event.key === "ArrowLeft") {
+				vx = -1
+				leftArrow = true
+			}
+			if (event.key === "ArrowRight") {
+				vx = 1
+				rightArrow = true
+			}
+			if (event.key === "ArrowUp") {
+				vy = -1
+				upArrow = true
+			}
+			if (event.key === "ArrowDown") {
+				vy = 1
+				downArrow = true
+			}
+		})
+
+		document.addEventListener("keyup", function (event) {
+			if (event.key === "ArrowLeft") {
+				if (rightArrow) {
+					vx = 1
+				} else {
+					vx = 0
+					rightArrow = false
+				}
+				leftArrow = false
+			}
+			if (event.key === "ArrowRight") {
+				if (leftArrow) {
+					vx = -1
+				} else {
+					leftArrow = false
+					vx = 0
+				}
+				rightArrow = false
+			}
+			if (event.key === "ArrowUp") {
+				if (downArrow) {
+					vy = 1
+				} else {
+					vy = 0
+					downArrow = false
+				}
+				upArrow = false
+			}
+			if (event.key === "ArrowDown") {
+				if (upArrow) {
+					vy = -1
+				} else {
+					vy = 0
+					upArrow = false
+				}
+				downArrow = false
+			}
+		})
+
+		let lastTime = 0
+		requestAnimationFrame(function animate(time) {
+			let diff = time - lastTime
+			lastTime = time
+			box.style.left = parseFloat(box.style.left) + vx * diff * 0.5 + "px"
+			box.style.top = parseFloat(box.style.top) + vy * diff * 0.5 + "px"
+			requestAnimationFrame(animate)
+		})
+	</script>
+</html>

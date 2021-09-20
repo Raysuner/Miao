@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Mouse shadow</title>
+	</head>
+	<body>
+		<strong>按住鼠标左键拖拽</strong>
+		<section></section>
+	</body>
+	<script charset="utf-8">
+		const stack = []
+		function getDiv() {
+			if (stack.length) {
+				return stack.pop()
+			} else {
+				return document.createElement("div")
+			}
+		}
+		let section = document.querySelector("section")
+		function onMouseMove(event) {
+			let div = getDiv()
+			div.style.width = "20px"
+			div.style.height = "20px"
+			div.style.position = "fixed"
+			div.style.borderRadius = "50%"
+			let left = event.clientX - (div.clientWidth >> 1)
+			let top = event.clientY - (div.clientWidth >> 1)
+			div.style.left = left + "px"
+			div.style.top = top + "px"
+			div.style.backgroundColor = "red"
+			if (section.children.length >= 10) {
+				stack.push(section.firstChild)
+				section.firstChild.remove()
+			}
+			section.append(div)
+		}
+		document.addEventListener("mousedown", function (event) {
+			if (event.which === 1) {
+				document.addEventListener("mousemove", onMouseMove)
+			}
+		})
+
+		document.addEventListener("mouseup", function once(event) {
+			if (event.which === 1) {
+				document.removeEventListener("mousemove", onMouseMove)
+			}
+		})
+	</script>
+</html>

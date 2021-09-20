@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Notebook</title>
+		<style type="text/css" media="screen">
+			select,
+			select > *,
+			button {
+				font-size: 18px;
+			}
+			select,
+			button {
+				padding: 5px 10px;
+				margin: 5px;
+			}
+			textarea {
+				padding: 5px;
+				display: block;
+				white-space: pre-wrap;
+				word-break: break-all;
+				margin-top: 20px;
+				font-size: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		Notes:
+		<select name="notebook" id="notebook"></select>
+		<button onclick="addNote()">add note</button>
+		<textarea name="textContent" rows="8" cols="40" autofocus></textarea>
+	</body>
+	<script charset="utf-8">
+		function addToList(text) {
+			let option = document.createElement("option")
+			option.textContent = text
+			list.append(option)
+		}
+
+		function addNote() {
+			let name = prompt("请输入选项名", "untitle")
+			if (!notes.hasOwnProperty(name)) {
+				notes[name] = ""
+				addToList(name)
+				saveLocalStorage()
+			}
+		}
+
+		function saveLocalStorage() {
+			localStorage.setItem("notes", JSON.stringify(notes))
+		}
+
+		let list = document.querySelector("select")
+		let textarea = document.querySelector("textarea")
+		let notes = JSON.parse(localStorage.getItem("notes")) || {
+			"shopping list": "",
+		}
+
+		list.addEventListener("change", function (event) {
+			textarea.value = notes[list.value]
+		})
+
+		textarea.addEventListener("change", function (event) {
+			notes[list.value] = textarea.value
+			saveLocalStorage()
+		})
+
+		for (let key in notes) {
+			if (notes.hasOwnProperty(key)) {
+				addToList(key)
+			}
+		}
+	</script>
+</html>

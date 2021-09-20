@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>autocompletion</title>
+	</head>
+	<body>
+		<input type="text" name="text" id="text" value="" />
+		<ul id="result"></ul>
+	</body>
+	<script charset="utf-8">
+		function getSuggest(word, callback) {
+			console.log("word", word)
+			let suggests = new Array(10).fill(0).map((_, i) => {
+				return word + i
+			})
+			callback(suggests)
+		}
+		let input = document.querySelector("input")
+		let ul = document.querySelector("ul")
+
+		input.oninput = debounce((e) => {
+			getSuggest(e.target.value, (suggests) => {
+				ul.innerHTML = ""
+				suggests.forEach((suggest) => {
+					let li = document.createElement("li")
+					li.textContent = suggest
+					ul.append(li)
+				})
+			})
+		}, 500)
+
+		function debounce(func, ms) {
+			let timeId
+			return function (...args) {
+				clearTimeout(timeId)
+				timeId = setTimeout(func, ms, ...args)
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>mini-regex</title>
+		<link
+			rel="stylesheet/less"
+			href="mini-project/mini-regex/mini-regex.less"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Mini-Regex</h1>
+			</header>
+			<div class="match">
+				<header>
+					<div class="title">Regular Expression</div>
+					<div class="flags">
+						<input type="checkbox" onclick="matchRegex()" id="ignoreCase" />
+						<label for="ignoreCase">i</label>
+						<input type="checkbox" onclick="matchRegex()" id="global" checked />
+						<label for="global">g</label>
+						<input type="checkbox" onclick="matchRegex()" id="mutiple" />
+						<label for="mutiple">m</label>
+						<input type="checkbox" onclick="matchRegex()" id="sticky" />
+						<label for="sticky">y</label>
+						<input type="checkbox" onclick="matchRegex()" id="unicode" />
+						<label for="unicode">u</label>
+						<input type="checkbox" onclick="matchRegex()" id="dotAll" />
+						<label for="dotAll">s</label>
+					</div>
+				</header>
+				<main class="main">
+					<input type="text" id="matchInput" oninput="matchRegex()" />
+					<br />
+					<div class="test">
+						<div class="title">Testing String</div>
+					</div>
+					<div class="content">
+						<textarea id="matchText" name="matchText" onscroll="setScroll()" oninput="matchRegex()">Amet voluptatum eveniet esse repellendus quos? Velit rem at rerum amet ab quod. In enim similique facere ut doloribus. Deleniti magni fuga rem modi odio. Deleniti quia doloribus voluptatum ipsa.</textarea>
+						<pre id="matchResult"></pre>
+					</div>
+				</div>
+			</main>
+			<div class="replace">
+				<header>
+					<div class="title">Replace String</div>
+				</header>				
+				<main class="main">
+					<input id="replaceInput" type="text" name="replaceInput" oninput="matchRegex()">
+					<br />
+					<div class="test">
+						<div class="title">Replace Result</div>
+					</div>
+					<div class="content">
+						<pre id="replaceResult"></pre>
+				</main>
+			</div>
+		</div>
+	</body>
+	<script src="mini-project//mini-regex/mini-regex.js" charset="utf-8"></script>
+	<script src="mini-project/less.js" charset="utf-8"></script>
+</html>

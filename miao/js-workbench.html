@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Js workbench</title>
+		<style type="text/css" media="screen">
+			button {
+				display: block;
+				margin: 5px 0px;
+				padding: 5px 15px;
+			}
+			textarea {
+				font-size: 20px;
+			}
+			div {
+				white-space: pre-wrap;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="run()">run</button>
+		<textarea name="textarea" id="textarea" rows="8" cols="30">
+            let a = 1
+            let b = 2
+            console.log(a)
+            console.log(b)
+            let c = 3
+            c = a * b
+        </textarea
+		>
+		<div id="result"></div>
+	</body>
+	<script charset="utf-8">
+		function run() {
+			result.textContent = ""
+			let console = {
+				log: function (...args) {
+					window.console.log(...args)
+					result.textContent += args.join(" ") + "\n"
+				},
+			}
+			let val = eval(textarea.value)
+			if (!val) {
+				val = ""
+			}
+			result.textContent += ">  " + val
+		}
+	</script>
+</html>

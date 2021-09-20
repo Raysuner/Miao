@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-grid</title>
+    <style>
+        .t1 {
+            font-size: 15px;
+            padding: 20px;
+        }
+
+        .t2 {
+            font-size: 15px;
+            padding: 20px 5px;
+        }
+
+        .table-priority {
+            border-collapse: collapse;
+        }
+
+        .table-priority col {
+            border: 5px solid #689CFC;
+        }
+
+        .table-priority tr {
+            border: 5px solid #689CFC;
+        }
+
+        .table-priority td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+
+        .table-priority td:hover {
+            border: 5px solid #73EAFA;
+            transition: border-color .5s;
+        }
+
+        /* 分隔行 */
+
+        .table-cover {
+            border-collapse: collapse;
+        }
+        
+        .table-cover td {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #689CFC;
+            position: relative;
+            text-align: center;
+        }
+
+        .table-cover td:hover::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid #73EAFA;
+        }
+
+        ul, li {
+            padding: 0;
+            margin: 0;
+            float: left;
+        }
+        /*列表实现*/
+        ul {
+            list-style: none;
+            width: 170px;
+        }
+        
+
+        li{
+            width: 50px;
+            height: 50px;
+            border: 5px solid #689CFC;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        li:nth-child(3n - 1),
+        li:nth-child(3n) {
+            margin-left: -5px;
+        }
+
+        li:nth-child(n + 4):nth-child(-n + 9) {
+            margin-top: -5px;
+        }
+
+        li:hover {
+            border: 5px solid #73EAFA;
+            z-index: 1;
+            position: relative;
+            transition: border-color .5s;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="t1">表格各元素优先级</div>
+    <table class="table-priority">
+        <tbody>
+            <col>
+            <col>
+            <col>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <div class="t2">表格内部元素覆盖td边框</div>
+    <table class="table-cover">
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <br>
+
+    <div class="f1">浮动</div>
+    <ul class="float">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+    </ul>
+</body>
+</html>

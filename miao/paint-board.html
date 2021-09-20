@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="mini-project/paint-board/iconfont.css" />
+		<link
+			rel="stylesheet/less"
+			href="mini-project/paint-board/paint-board.less"
+		/>
+		<title>PaintBoard</title>
+	</head>
+	<body>
+		<div class="container">
+			<section id="paint">
+				<header>
+					<div class="left">
+						<ul class="selection">
+							<li class="select-item"><i class="iconfont icon-fanhui"></i></li>
+							<li class="select-item"><i class="iconfont icon-xiayibu"></i></li>
+							<li class="select-item">
+								<i class="iconfont icon-pan_icon-copy"></i>
+							</li>
+							<li class="select-item"><i class="iconfont icon-huifu"></i></li>
+						</ul>
+						<input
+							type="range"
+							name="range"
+							id="range"
+							min="1"
+							max="20"
+							value="5"
+						/>
+						<input type="text" name="tickness" id="tickness" value="5" />
+						<input type="file" name="file" id="file" accept=".svg" hidden />
+						<ul class="colorscheme">
+							<li
+								style="background-color: #ffcdd2; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #ffe0b2; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #fff9c4; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #c8e6c9; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #b2ebf2; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #bbdefb; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #e1bee7; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #f5f5f5; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #f44336; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #ff9800; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #ffeb3b; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #4caf50; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #00bcd4; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #2196f3; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #9c27b0; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #9e9e9e; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #b71c1c; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #e65110; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #f57f17; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #1b5e20; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #006064; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #0d47a1; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #4a14bc; width: 30px; height: 30px"
+							></li>
+							<li
+								style="background-color: #212121; width: 30px; height: 30px"
+							></li>
+						</ul>
+					</div>
+					<div class="right">
+						<ul class="updown">
+							<li>
+								<i class="iconfont icon-shangchuan"></i>
+							</li>
+							<li class="select-item">
+								<i class="iconfont icon-xiazai"></i>
+							</li>
+						</ul>
+					</div>
+				</header>
+				<div class="main">
+					<aside>
+						<div class="title">基础图形</div>
+						<div class="panel-edge"></div>
+						<ul class="tools">
+							<li><i class="iconfont icon-line"></i></li>
+							<li><i class="iconfont icon-changfangxing"></i></li>
+							<li><i class="iconfont icon-zhengfangxing"></i></li>
+							<li><i class="iconfont icon"></i></li>
+							<li><i class="iconfont icon"></i></li>
+							<li><i class="iconfont icon"></i></li>
+							<li><i class="iconfont icon"></i></li>
+							<li><i class="iconfont icon"></i></li>
+							<li><i class="iconfont icon"></i></li>
+						</ul>
+					</aside>
+					<main class="paint-container">
+						<svg></svg>
+					</main>
+				</div>
+			</section>
+		</div>
+	</body>
+	<script src="mini-project/paint-board/paint-board.js"></script>
+	<script src="mini-project/less.js"></script>
+</html>

@@ -1,0 +1,148 @@
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.color-selected {
+	opacity: 0.8;
+	border: 2px solid black !important;
+}
+
+.menu-btn-selected {
+	border: 2px solid white;
+	color: lightskyblue;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	.container {
+		width: 80%;
+		min-width: 1030px;
+        margin: 0 auto;
+		section {
+			header {
+				height: 100px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				background-color: lightskyblue;
+				.left {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					flex: 1;
+					.selection {
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+						.select-item {
+							i {
+								border: 2px solid transparent;
+								margin: 5px 5px;
+								padding: 10px 10px;
+								&:hover {
+									color: white;
+									cursor: pointer;
+								}
+							}
+						}
+					}
+					input {
+						margin: 5px 15px;
+					}
+					input[type="text"] {
+						width: 40px;
+						height: 25px;
+						border-radius: 6px;
+						font-size: 15px;
+						cursor: pointer;
+						outline: none;
+						border: 2px solid;
+						text-align: center;
+						&:focus {
+							border: 2px solid lightskyblue;
+							cursor: unset;
+						}
+					}
+					.colorscheme {
+						width: 490px;
+						display: flex;
+						flex-wrap: wrap;
+						margin: 10px;
+						li {
+							border: 2px solid transparent;
+							margin: 2px;
+						}
+					}
+				}
+				.right {
+					display: flex;
+					.updown {
+						display: flex;
+						align-items: center;
+						li {
+							i {
+								margin: 5px 5px;
+								padding: 10px 10px;
+								&:hover {
+									color: white;
+								}
+							}
+						}
+					}
+				}
+			}
+			div.main {
+				display: flex;
+				aside {
+					height: calc(100vh - 100px);
+					width: 300px;
+					min-width: 300px;
+					background-color: #eee;
+					div.title {
+						padding: 10px 0px;
+						margin: 0 auto;
+						text-align: center;
+					}
+					div.panel-edge {
+						padding: 0;
+						background-color: #bbb;
+						height: 2px;
+					}
+					ul.tools {
+						display: flex;
+						flex-wrap: wrap;
+						align-content: center;
+						li {
+							border: 3px solid transparent;
+							padding: 5px 0px;
+							margin: 8px 5px;
+							width: 19.5%;
+							text-align: center;
+							&:hover {
+								color: white;
+								background-color: lightskyblue;
+								transition: 300ms;
+							}
+						}
+					}
+				}
+				main {
+					flex: 1;
+					svg {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>moving box</title>
+		<style type="text/css" media="screen">
+			.selected {
+				z-index: 1000;
+			}
+			section {
+				width: 100px;
+				height: 100px;
+			}
+			.box {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+			}
+
+			.box1 {
+				left: 100px;
+				background-color: lightskyblue;
+			}
+
+			.box2 {
+				left: 200px;
+				background-color: pink;
+			}
+
+			.box3 {
+				left: 300px;
+				background-color: lightgreen;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<div class="box1 box"></div>
+			<div class="box2 box"></div>
+			<div class="box3 box"></div>
+		</section>
+	</body>
+	<script charset="utf-8">
+		let section = document.querySelector("section")
+		let mouseDownTarget = null
+
+		section.onmousedown = function (event) {
+			mouseDownTarget = event.target
+			let shiftX = event.clientX - mouseDownTarget.getBoundingClientRect().left,
+				shiftY = event.clientY - mouseDownTarget.getBoundingClientRect().top
+			let newLeft = 0,
+				newTop = 0
+
+			function moveAt(left, top) {
+				mouseDownTarget.style.left = left + "px"
+				mouseDownTarget.style.top = top + "px"
+			}
+
+			function onMouseMove(event) {
+				let selectedAll = document.querySelectorAll(".selected")
+				for (let item of selectedAll) {
+					item.classList.toggle("selected")
+				}
+				event.target.classList.add("selected")
+				newLeft = event.pageX - shiftX
+				newTop = event.pageY - shiftY
+
+				let leftEdge = 0,
+					rightEdge =
+						document.documentElement.clientWidth - mouseDownTarget.clientWidth
+
+				let TopEdge = 0,
+					bottomEdge =
+						document.documentElement.clientHeight - mouseDownTarget.clientHeight
+
+				if (newLeft > rightEdge) {
+					newLeft = rightEdge
+				} else if (newLeft < leftEdge) {
+					newLeft = leftEdge
+				}
+				if (newTop < 0) {
+					newTop = 0
+				} else if (newTop > bottomEdge) {
+					newTop = bottomEdge
+				}
+				moveAt(newLeft, newTop)
+			}
+
+			document.addEventListener("mousemove", onMouseMove)
+
+			document.addEventListener("mouseup", function f() {
+				document.removeEventListener("mousemove", onMouseMove)
+				document.removeEventListener("mouseup", f)
+			})
+		}
+
+		section.ondragstart = function () {
+			return false
+		}
+	</script>
+</html>
